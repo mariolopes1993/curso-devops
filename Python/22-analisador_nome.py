@@ -1,0 +1,6 @@
+nome = str(input("Digite o nome: ")).strip()
+print("Nome em maiusculas é {}".format(nome.upper()))
+print("Nome em minusculas é {}".format(nome.lower()))
+print("Nome tem {} letras ".format(len(nome)- nome.count(" ")))
+separa = nome.split()
+print("Nome digitado é {} e tem {} letras".format(separa[0], len(separa[0])))
