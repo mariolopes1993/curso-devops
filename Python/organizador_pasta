@@ -1,0 +1,53 @@
+import os
+
+from olamundo2 import *
+
+imagens_ext = ['.jpg', '.jpeg', '.png']
+documentos_ext = ['.txt', '.pdf', '.xlsx', '.docx', '.pptx', '.ODF']
+arquivos_exe = ['.exe', '.iso']
+
+
+def extensao(nome):
+    index = nome.rfind('.')
+    return nome[index:]
+
+
+def definir(diretorio):
+    instaladores_pasta = os.path.join(diretorio, "Instaladores")
+    imagens_pasta = os.path.join(diretorio, "Imagens")
+    documentos_pasta = os.path.join(diretorio, "Documentos")
+    outros_pasta = os.path.join(diretorio, "Outros arquivos")
+
+    if not os.path.isdir(instaladores_pasta):
+        os.mkdir(instaladores_pasta)
+    if not os.path.isdir(imagens_pasta):
+        os.mkdir(imagens_pasta)
+    if not os.path.isdir(documentos_pasta):
+        os.mkdir(documentos_pasta)
+    if not os.path.isdir(outros_pasta):
+        os.mkdir(outros_pasta)
+
+    nomes_arquivos = os.listdir(diretorio)
+
+    for arquivo in nomes_arquivos:
+        if os.path.isfile(os.path.join(diretorio, arquivo)):
+
+            extensaooo = str.lower(extensao(arquivo))
+            print("Nome do arquivo:", arquivo, "Nome da extensão:", extensaooo)
+
+            if extensaooo in imagens_ext:
+                nova_pasta = imagens_pasta
+            elif extensaooo in arquivos_exe:
+                nova_pasta = instaladores_pasta
+            elif extensaooo in documentos_ext:
+                nova_pasta = documentos_pasta
+            else:
+                nova_pasta = outros_pasta
+
+            old = os.path.join(diretorio, arquivo)
+            new = os.path.join(nova_pasta, arquivo)
+            os.rename(old, new)
+            print("Moveu:", old, "->", new)
+
+if __name__ == '__main__':
+    definir(r"C:\Users\mario\Downloads")
