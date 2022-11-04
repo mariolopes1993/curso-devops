@@ -1,6 +1,6 @@
 import os
 
-from olamundo2 import *
+#from olamundo2 import *
 
 imagens_ext = ['.jpg', '.jpeg', '.png']
 documentos_ext = ['.txt', '.pdf', '.xlsx', '.docx', '.pptx', '.ODF']
